@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const todoRoutes = express.Router();
-const PORT = process.env.PORT || 4000;
-let Todo = require('./backend/todo.model');
+const PORT = process.env.PORT || 3000;
+let Todo = require('./todo.model');
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -70,12 +70,12 @@ todoRoutes.route('/update/:id').post(function (req, res) {
 
 app.use('/todoapp', todoRoutes);
 
-// if(process.env.NODE_ENV === 'production'){
-app.use(express.static(path.join(__dirname, 'build')));
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-// }
+// // if(process.env.NODE_ENV === 'production'){
+// app.use(express.static(path.join(__dirname, 'build')));
+// app.get('*', (req, res) => {
+// 	res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
+// // }
 
 app.listen(PORT, function () {
 	console.log('Server is running on Port: ' + PORT);
