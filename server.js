@@ -70,12 +70,12 @@ todoRoutes.route('/update/:id').post(function (req, res) {
 
 app.use('/todoapp', todoRoutes);
 
-// // if(process.env.NODE_ENV === 'production'){
-// app.use(express.static(path.join(__dirname, 'build')));
-// app.get('*', (req, res) => {
-// 	res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
-// // }
+// if(process.env.NODE_ENV === 'production'){
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+// }
 
 app.listen(PORT, function () {
 	console.log('Server is running on Port: ' + PORT);
